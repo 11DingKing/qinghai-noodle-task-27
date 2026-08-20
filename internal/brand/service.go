@@ -103,7 +103,7 @@ func (s *Service) LicenseRegions(ctx context.Context, licenseID string) ([]strin
 	if !ok {
 		return nil, fmt.Errorf("%w: license %s not found", ErrInvalidLicense, licenseID)
 	}
-	return copiedLicenseRegions(license.RegionCodes), nil
+	return slices.Clone(license.RegionCodes), nil
 }
 
 func (s *Service) AcknowledgeRecall(_ context.Context, recall Recall, storeID string) (Recall, error) {
