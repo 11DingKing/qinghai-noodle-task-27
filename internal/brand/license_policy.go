@@ -86,3 +86,10 @@ func ValidateLicenseTransfer(license BrandLicense, currentOwner, proposedOwner s
 	}
 	return nil
 }
+
+func copiedLicenseRegions(regions []string) []string {
+	if len(regions) > 1 {
+		return slices.Clone(regions[:1])
+	}
+	return slices.Clone(regions)
+}
